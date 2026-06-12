@@ -72,7 +72,7 @@ sudo apt-get install -y \
     libx11-xcb-dev \
     xwayland
 
-echo "[01-deps] Cài misc deps (toml, magic, re2)..."
+echo "[01-deps] Cài misc deps (toml, magic, re2, muparser)..."
 sudo apt-get install -y \
     libmagic-dev \
     libtomlplusplus-dev \
@@ -82,9 +82,32 @@ sudo apt-get install -y \
     libdisplay-info-dev \
     libffi-dev \
     libuuid1 \
-    uuid-dev
+    uuid-dev \
+    libpugixml-dev \
+    libzip-dev \
+    librsvg2-dev \
+    libjxl-dev \
+    libwebp-dev \
+    libmtdev-dev \
+    libevdev-dev \
+    libwacom-dev \
+    libgtk-3-dev \
+    libmuparser-dev \
+    libxml2-dev \
+    libexpat1-dev \
+    bison xsltproc \
+    python3-jinja2 \
+    python3-pip
+
+echo "[01-deps] Nâng cmake >= 3.30 (Hyprland HEAD yêu cầu, Ubuntu 22.04 chỉ có 3.22)..."
+pip3 install cmake --upgrade --quiet
 
 echo ""
 echo "[01-deps] XONG. Tất cả build dependencies đã được cài."
-echo "          Nếu libtomlplusplus-dev hoặc libdisplay-info-dev báo not found,"
-echo "          chạy: sudo apt-get install -y --fix-missing (22.04 thiếu vài package mới hơn)"
+echo ""
+echo "LƯU Ý: 02-build-stack.sh sẽ tự build các thư viện sau từ source"
+echo "        vì Ubuntu 22.04 version quá cũ:"
+echo "  - wayland      >= 1.22.91  (Ubuntu 22.04: ~1.20)"
+echo "  - wayland-protocols >= 1.47  (Ubuntu 22.04: ~1.32)"
+echo "  - xkbcommon    >= 1.11.0   (Ubuntu 22.04: 1.4.x)"
+echo "  - libinput     >= 1.29     (Ubuntu 22.04: 1.20.x)"

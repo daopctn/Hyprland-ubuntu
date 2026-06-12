@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # Bước 1: Cài GCC 14 qua PPA — KHÔNG đặt làm compiler default hệ thống.
-# Hyprland cần C++23/26, GCC 11 (Ubuntu 22.04 default) không đủ.
+#
+# Hyprland HEAD dùng C++26 features (vd: ofstream::native_handle()),
+# KHÔNG phải C++23. GCC 11 (22.04 default) và GCC 13 đều không đủ.
+# GCC 14 + -std=gnu++26 là combination duy nhất đã verified build được.
+#
 # Compiler mới chỉ được gọi lúc build Hyprland, radar/Qt vẫn ăn GCC 11 bình thường.
 
 set -euo pipefail
